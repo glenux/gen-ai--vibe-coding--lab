@@ -3,15 +3,10 @@
 ![License BSD-3](https://img.shields.io/badge/license-BSD-3.svg)
 [![Donate on patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://patreon.com/glenux)
 
-<!--
-
 > :information_source: This project is available on our self-hosted server and
 > on CodeBerg and GitHub as mirrors. For the latest updates and comprehensive
 > version of our project, please visit our primary repository at:
 > <https://code.apps.glenux.net/glenux/gen-ai--vibe-coding--lab
-
--->
-
 
 # GenAI Vibe Coding Lab
 
