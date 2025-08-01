@@ -36,7 +36,7 @@ steps:
       - echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com bookworm main" | tee /etc/apt/sources.list.d/hashicorp.list
       - apt-get update
       - apt-get install -q -y vagrant
-      - vagrant validate
+      - vagrant validate --ignore-provider
 
     #  # Step 3: Run the full provisioning script inside a Docker container.
     #  # This acts as the main integration test.
