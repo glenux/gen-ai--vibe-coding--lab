@@ -22,20 +22,20 @@ steps:
   - name: lint-shell-script
     image: debian:12
     commands:
-      - apt-get update
-      - apt-get install -q -y shellcheck
+      - apt-get update -qq
+      - apt-get install -qq -y shellcheck
       - shellcheck provision.sh
 
   # Step 2: Validate the Vagrantfile syntax.
   - name: validate-vagrantfile
     image: debian:12
     commands:
-      - apt-get update
-      - apt-get install -q -y gpg wget
+      - apt-get update -qq
+      - apt-get install -qq -y gpg wget
       - wget -O - https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
       - echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com bookworm main" | tee /etc/apt/sources.list.d/hashicorp.list
-      - apt-get update
-      - apt-get install -q -y vagrant
+      - apt-get update -qq
+      - apt-get install -qq -y vagrant
       - vagrant validate --ignore-provider
 
     #  # Step 3: Run the full provisioning script inside a Docker container.
@@ -64,26 +64,7 @@ steps:
     #    depends_on:
     #      - lint-shell-script
     #      - validate-vagrantfile
-    #
-    #  # Step 4: Clean up the Vagrant environment, regardless of success or failure.
-    #  - name: cleanup
-    #    image: hashicorp/vagrant:2.4.1
-    #    volumes:
-    #      - name: dockersock
-    #        path: /var/run/docker.sock
-    #    commands:
-    #      - apk add --no-cache docker-cli
-    #      - vagrant plugin install vagrant-docker
-    #      - echo "--> Destroying Vagrant Docker environment..."
-    #      - vagrant destroy --provider=docker -f
-    #    # This 'when' clause ensures the cleanup step always runs.
-    #    when:
-    #      status:
-    #        - success
-    #        - failure
-    #    depends_on:
-    #      - integration-test
-    #
+
 services:
   - name: docker
     image: docker:dind
