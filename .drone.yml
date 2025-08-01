@@ -13,10 +13,10 @@ trigger:
 
 # The 'integration-test' and 'cleanup' steps need access to the Docker
 # socket to run Vagrant with the Docker provider.
-volumes:
-  - name: dockersock
-    host:
-      path: /var/run/docker.sock
+# volumes:
+#   - name: dockersock
+#     host:
+#       path: /var/run/docker.sock
 
 steps:
   # Step 1: Lint the main provisioning script for common errors.
@@ -35,9 +35,9 @@ steps:
   # This acts as the main integration test.
   - name: integration-test
     image: hashicorp/vagrant:2.4.1
-    volumes:
-      - name: dockersock
-        path: /var/run/docker.sock
+    # volumes:
+    #   - name: dockersock
+    #     path: /var/run/docker.sock
     commands:
       # The base vagrant image needs the docker client to talk to the host daemon
       - apk add --no-cache docker-cli
