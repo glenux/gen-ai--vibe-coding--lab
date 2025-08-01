@@ -3,15 +3,6 @@ kind: pipeline
 type: docker
 name: default
 
-
-# This pipeline will run on pushes and pull requests to the main branch.
-trigger:
-  branch:
-    - main
-  event:
-    - push
-    - pull_request
-
 # The 'integration-test' and 'cleanup' steps need access to the Docker
 # socket to run Vagrant with the Docker provider.
 # volumes:
@@ -21,6 +12,13 @@ trigger:
 
 steps:
   # Step 1: Lint the main provisioning script for common errors.
+  - name: debug
+    image: alpine
+    commands:
+      - 'echo "Repository: glenux/service-drone-runner"'
+      - 'echo "Git commit: ${DRONE_COMMIT_SHA:0:8}"'
+
+
   - name: lint-shell-script
     image: koalaman/shellcheck-alpine:v0.9.0
     commands:
