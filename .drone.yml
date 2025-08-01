@@ -1,0 +1,79 @@
+---
+kind: pipeline
+type: docker
+name: ci
+
+# This pipeline will run on pushes and pull requests to the main branch.
+trigger:
+  branch:
+    - main
+  event:
+    - push
+    - pull_request
+
+# The 'integration-test' and 'cleanup' steps need access to the Docker
+# socket to run Vagrant with the Docker provider.
+# volumes:
+#   - name: dockersock
+#     host:
+#       path: /var/run/docker.sock
+
+steps:
+  # Step 1: Lint the main provisioning script for common errors.
+  - name: lint-shell-script
+    image: koalaman/shellcheck-alpine:v0.9.0
+    commands:
+      - shellcheck provision.sh
+
+    #  # Step 2: Validate the Vagrantfile syntax.
+    #  - name: validate-vagrantfile
+    #    image: hashicorp/vagrant:2.4.1
+    #    commands:
+    #      - vagrant validate
+    #
+    #  # Step 3: Run the full provisioning script inside a Docker container.
+    #  # This acts as the main integration test.
+    #  - name: integration-test
+    #    image: hashicorp/vagrant:2.4.1
+    #    # volumes:
+    #    #   - name: dockersock
+    #    #     path: /var/run/docker.sock
+    #    commands:
+    #      # The base vagrant image needs the docker client to talk to the host daemon
+    #      - apk add --no-cache docker-cli
+    #      - vagrant plugin install vagrant-docker
+    #      - echo "--> Starting Vagrant with Docker provider..."
+    #      - vagrant up --provider=docker
+    #      - echo "--> Vagrant up complete. Verifying installed tools..."
+    #      # Use `vagrant ssh` to run verification commands inside the container
+    #      - vagrant ssh -c "command -v aider && aider --version"
+    #      - vagrant ssh -c "command -v claude-code"
+    #      - vagrant ssh -c "command -v crush"
+    #      - vagrant ssh -c "command -v goose"
+    #      - vagrant ssh -c "asdf --version"
+    #      - vagrant ssh -c "direnv --version"
+    #      - vagrant ssh -c "code-server --version"
+    #      - echo "--> Verification successful."
+    #    depends_on:
+    #      - lint-shell-script
+    #      - validate-vagrantfile
+    #
+    #  # Step 4: Clean up the Vagrant environment, regardless of success or failure.
+    #  - name: cleanup
+    #    image: hashicorp/vagrant:2.4.1
+    #    volumes:
+    #      - name: dockersock
+    #        path: /var/run/docker.sock
+    #    commands:
+    #      - apk add --no-cache docker-cli
+    #      - vagrant plugin install vagrant-docker
+    #      - echo "--> Destroying Vagrant Docker environment..."
+    #      - vagrant destroy --provider=docker -f
+    #    # This 'when' clause ensures the cleanup step always runs.
+    #    when:
+    #      status:
+    #        - success
+    #        - failure
+    #    depends_on:
+    #      - integration-test
+    #
