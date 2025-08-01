@@ -79,6 +79,12 @@ if ! grep -q "export PATH=\$PATH:~/.local/bin" "/home/$USER/.bashrc" ; then
 	su - "$USER" -c "echo 'export PATH=\$PATH:~/.local/bin' >> /home/$USER/.bashrc"
 fi
 
+# TODO: add API keys to bashrc
+# export GEMINI_API_KEY="YOUR_API_KEY"
+# export GOOGLE_API_KEY="YOUR_API_KEY"
+# export GOOGLE_GENAI_USE_VERTEXAI=true
+# export OPENAI_API_KEY="your-api-key-here"
+
 ##
 ## Install IA & Vibe Coding tools
 ##
@@ -88,6 +94,22 @@ npm install -g @anthropic-ai/claude-code
 
 # Install Crush
 npm install -g @charmland/crush
+
+# Install Gemini CLI
+# Ref. https://github.com/google-gemini/gemini-cli
+npm install -g @google/gemini-cli
+
+# Install OpenAI Codex
+# Ref. https://github.com/openai/codex
+npm install -g @openai/codex
+
+# Install MyCoder
+# Ref. https://github.com/drivecore/mycoder
+npm install -g mycoder
+
+# TODO: install Dyad
+# Ref. https://www.dyad.sh/
+
 
 # Install Goose
 su - "$USER" -c "curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | CONFIGURE=false bash"
@@ -120,6 +142,13 @@ systemctl start "code-server@$USER"
 
 su - "$USER" -c "code-server --install-extension kilocode.Kilo-Code"
 su - "$USER" -c "code-server --install-extension saoudrizwan.claude-dev"
+
+# Install Continue
+# Ref. https://github.com/continuedev/continue
+su - "$USER" -c "code-server --install-extension Continue.continue"
+
+# TODO: Install SuperDesign
+# Ref. https://www.superdesign.dev/
 
 systemctl restart "code-server@$USER"
 
