@@ -24,12 +24,12 @@ steps:
     commands:
       - shellcheck provision.sh
 
-    #  # Step 2: Validate the Vagrantfile syntax.
-    #  - name: validate-vagrantfile
-    #    image: hashicorp/vagrant:2.4.1
-    #    commands:
-    #      - vagrant validate
-    #
+  # Step 2: Validate the Vagrantfile syntax.
+  - name: validate-vagrantfile
+    image: hashicorp/vagrant:2.4.1
+    commands:
+      - vagrant validate
+
     #  # Step 3: Run the full provisioning script inside a Docker container.
     #  # This acts as the main integration test.
     #  - name: integration-test
