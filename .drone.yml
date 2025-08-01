@@ -1,7 +1,8 @@
 ---
 kind: pipeline
 type: docker
-name: ci
+name: default
+
 
 # This pipeline will run on pushes and pull requests to the main branch.
 trigger:
@@ -77,3 +78,17 @@ steps:
     #    depends_on:
     #      - integration-test
     #
+services:
+  - name: docker
+    image: docker:dind
+    privileged: true
+    volumes:
+      - name: dockersock
+        path: /var/run
+
+volumes:
+  - name: cache
+    temp: {}
+  - name: dockersock
+    temp: {}
+
