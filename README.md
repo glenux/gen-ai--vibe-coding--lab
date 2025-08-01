@@ -39,15 +39,23 @@ familiar and powerful editing experience out of the box.
   * **Aider**: Chat with AI and edit code right from the terminal.
   * **Claude Code**: A command-line tool for interacting with Anthropic's
     Claude model.
-  * **Crush**: An intelligent command-line tool that uses AI to generate shell
-    commands from plain English.
-* **Modern Development Utilities**:
-  * **asdf**: Manage multiple versions of runtimes like Node.js, Python, etc.
-  * **direnv**: Automatically load environment variables on a per-project
-    basis.
-  * **Goose**: A powerful tool for managing database migrations.
-* **Nested Virtualization**: Enabled by default, so you can run tools like
-  Docker or Minikube inside the VM.
+  * **Cline (VS Code extension)**:  Autonomous coding agent right in your IDE,
+    capable of creating/editing files, executing commands, using the browser,
+    and more with your permission every step of the way.
+  * **Continue (VS Code extension)**: An open-source autopilot for software
+    development; a powerful extension that brings LLMs into your IDE.
+  * **Crush**: The glamourous AI coding agent for your favourite terminal.
+  * **Gemini CLI**: An open-source AI agent that brings the power of Gemini
+    directly into your terminal. 
+  * **Goose**: An open source, extensible AI agent that goes beyond code
+    suggestions - install, execute, edit, and test with any LLM.
+  * **Kilo Code (VS Code extension)**: An AI-powered code completion assistant
+    that works inside the editor.
+  * **MyCoder**:  Simple to install, powerful command-line based AI agent
+    system for coding.
+  * **OpenAI Codex**: Lightweight coding agent that runs in your terminal. 
+* **Nested Virtualization**: Enabled by default, so you can run tools more VM
+  inside the VM.
 
 ## Prerequisites
 

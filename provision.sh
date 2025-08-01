@@ -147,8 +147,21 @@ su - "$USER" -c "code-server --install-extension saoudrizwan.claude-dev"
 # Ref. https://github.com/continuedev/continue
 su - "$USER" -c "code-server --install-extension Continue.continue"
 
+##
+## Install and Configure remote desktop session with minimalist WM
+##
+
 # TODO: Install SuperDesign
 # Ref. https://www.superdesign.dev/
+
+# TODO: Install Windsurf Editor
+# https://windsurf.com/
+
+# TODO: Install Void Editor
+# Ref. https://voideditor.com/
+
+# TODO: Install OpenHands / Devstral
+# Ref. https://github.com/All-Hands-AI/OpenHands
 
 systemctl restart "code-server@$USER"
 
