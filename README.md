@@ -16,13 +16,15 @@
 # GenAI Vibe Coding Lab
 
 Welcome to the GenAI Vibe Coding Lab! This project provides a complete,
-portable, and ready-to-use development environment in a virtual machine. It's
-perfect for anyone who wants a consistent and isolated workspace packed with
-the latest AI-powered coding tools, without cluttering up their main computer.
+portable, and ready-to-use vibe-coding environment in a virtual machine. 
 
-With a single command, you can launch a Debian "Bookworm" Linux environment
-that comes pre-installed with everything you need to start experimenting with
-AI in your coding workflow.
+It's perfect for anyone who wants a consistent and isolated workspace packed
+with the latest AI-powered coding tools, without cluttering up their main
+computer.
+
+With a single command, you can launch a Linux environment that comes
+pre-installed with everything you need to start experimenting with AI in your
+coding workflow.
 
 The lab is accessible directly from your web browser via VS Code, providing a
 familiar and powerful editing experience out of the box.
